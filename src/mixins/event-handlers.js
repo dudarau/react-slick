@@ -67,9 +67,6 @@ var EventHandlers = {
     if (!this.state.dragging) {
       return;
     }
-    if (this.state.scrolling) {
-      return;
-    }
     if (this.state.animating) {
       return;
     }
@@ -91,11 +88,6 @@ var EventHandlers = {
     var dotCount = Math.ceil(this.state.slideCount / this.props.slidesToScroll);
     var swipeDirection = this.swipeDirection(this.state.touchObject);
     var touchSwipeLength = touchObject.swipeLength;
-    var verticalSwipeLength = Math.round(Math.sqrt(Math.pow(this.state.touchObject.curY - this.state.touchObject.startY, 2)));
-    if (!this.props.vertical && verticalSwipeLength > 4) {
-      this.setState({ scrolling: true });
-      return;
-    }
 
     if (this.props.infinite === false) {
       if ((currentSlide === 0 && swipeDirection === 'right') || (currentSlide + 1 >= dotCount && swipeDirection === 'left')) {
@@ -128,10 +120,6 @@ var EventHandlers = {
   },
   swipeEnd: function (e) {
     if (!this.state.dragging) {
-      return;
-    }
-    if (this.state.scrolling) {
-      this.setState({ scrolling: false });
       return;
     }
     var touchObject = this.state.touchObject;

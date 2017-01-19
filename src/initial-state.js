@@ -1,7 +1,6 @@
 var initialState = {
     animating: false,
     dragging: false,
-    scrolling: false,
     autoPlayTimer: null,
     currentDirection: 0,
     currentLeft: null,
