@@ -442,7 +442,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	  swipeMove: function swipeMove(e) {
-	    if (!this.state.dragging && this.state.scrolling) {
+	    if (!this.state.dragging) {
+	      return;
+	    }
+	    if (this.state.scrolling) {
 	      return;
 	    }
 	    if (this.state.animating) {
@@ -503,7 +506,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  swipeEnd: function swipeEnd(e) {
-	    if (!this.state.dragging && this.state.scrolling) {
+	    if (!this.state.dragging) {
+	      return;
+	    }
+	    if (this.state.scrolling) {
 	      this.setState({ scrolling: false });
 	      return;
 	    }
