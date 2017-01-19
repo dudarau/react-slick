@@ -64,7 +64,10 @@ var EventHandlers = {
     });
   },
   swipeMove: function (e) {
-    if (!this.state.dragging && this.state.scrolling) {
+    if (!this.state.dragging) {
+      return;
+    }
+    if (this.state.scrolling) {
       return;
     }
     if (this.state.animating) {
@@ -124,7 +127,10 @@ var EventHandlers = {
     }
   },
   swipeEnd: function (e) {
-    if (!this.state.dragging && this.state.scrolling) {
+    if (!this.state.dragging) {
+      return;
+    }
+    if (this.state.scrolling) {
       this.setState({ scrolling: false });
       return;
     }
